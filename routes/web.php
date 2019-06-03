@@ -21,4 +21,6 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/users', 'UsersController@index')->name('users');
+Route::get('/roles', 'RolesController@index')->name('roles');
