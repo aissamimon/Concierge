@@ -71,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item ">
-            <a href="/dashboard" class="nav-link active">
+            <a href="/dashboard" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -89,13 +89,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="/users" class="nav-link {{ (request()->is('users')) ? 'active' : '' }}">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>User</p>
+                  <p>Users</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/roles" class="nav-link {{ (request()->is('roles')) ? 'active' : '' }}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Roles</p>
                 </a>
