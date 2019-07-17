@@ -91,15 +91,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                 <a href="/users" class="nav-link {{ (request()->is('users')) ? 'active' : '' }}">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Users</p>
+                  <p>Staff</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="/roles" class="nav-link {{ (request()->is('roles')) ? 'active' : '' }}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Roles</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
 
@@ -127,13 +127,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2"> -->
+          <!-- <div class="col-sm-6">
+            <h1 class="m-0 text-dark">@yield('header', 'Bookme')</h1>
+          </div> -->
+          <!-- /.col -->
+          <!-- <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Starter Page</li>
+            </ol>
+          </div> --><!-- /.col
+        </div><!-- /.row -->
+      <!-- </div> --><!-- /.container-fluid -->
+    <!-- </div> -->
+    <!-- /.content-header -->
 
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+        <div class="row">
 
-        @yield('content')
+          @yield('content')
 
+        </div>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
