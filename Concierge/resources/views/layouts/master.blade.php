@@ -12,11 +12,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{ config('app.name') }}</title>
-  
-  <link rel="stylesheet" type="text/css" href="/css/app.css">
-  <link rel="stylesheet" type="text/css" href="{{ url('/css/custom.css') }}" />
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/app.css">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -83,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item has-treeview ">
-             <a href="#" class="nav-link ">
+            <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-cog"></i>
               <p>
                 Managment
@@ -91,14 +88,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
             <ul class="nav nav-treeview">
-
               <li class="nav-item">
-                <a href="/incident_type" class="nav-link {{ (request()->is('incidents')) ? 'active' : '' }}">
+                <a href="/users" class="nav-link {{ (request()->is('users')) ? 'active' : '' }}">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Incidents</p>
+                  <p>Users</p>
                 </a>
               </li>
-              
+              <li class="nav-item">
+                <a href="/roles" class="nav-link {{ (request()->is('roles')) ? 'active' : '' }}">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Roles</p>
+                </a>
+              </li>
             </ul>
           </li>
 
@@ -119,8 +120,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         </ul>
       </nav>
+      <!-- /.sidebar-menu -->
     </div>
+    <!-- /.sidebar -->
   </aside>
+
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 
     <!-- Main content -->
@@ -129,9 +134,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         @yield('content')
 
-      </div>
+      </div><!-- /.container-fluid -->
     </div>
+    <!-- /.content -->
   </div>
+  <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
   <footer class="main-footer">
@@ -140,9 +147,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </footer>
 </div>
 
-<script type="text/javascript" src="/js/app.js"></script>
-<script type="text/javascript" src="/js/custom.js"></script>
-@include('sweetalert::alert')
 
+<script type="text/javascript" src="/js/app.js"></script>
 </body>
 </html>
