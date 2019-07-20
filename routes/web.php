@@ -22,5 +22,5 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('/users', 'UsersController@index')->name('users');
-Route::get('/roles', 'RolesController@index')->name('roles');
+Route::get('/staff', 'StaffController@index')->name('staff');
+Route::post('/staff', 'StaffController@store');
