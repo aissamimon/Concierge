@@ -12,8 +12,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{ config('app.name') }}</title>
-
+  
   <link rel="stylesheet" type="text/css" href="/css/app.css">
+  <link rel="stylesheet" type="text/css" href="{{ url('/css/custom.css') }}" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -80,7 +83,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
+             <a href="#" class="nav-link ">
               <i class="nav-icon fa fa-cog"></i>
               <p>
                 Managment
@@ -89,17 +92,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/users" class="nav-link {{ (request()->is('users')) ? 'active' : '' }}">
+                <a href="/incident_type" class="nav-link {{ (request()->is('incident')) ? 'active' : '' }}">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Staff</p>
+                  <p>Incidents</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a href="/roles" class="nav-link {{ (request()->is('roles')) ? 'active' : '' }}">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Roles</p>
-                </a>
-              </li> -->
             </ul>
           </li>
 
@@ -120,45 +117,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
   </aside>
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <!-- <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2"> -->
-          <!-- <div class="col-sm-6">
-            <h1 class="m-0 text-dark">@yield('header', 'Bookme')</h1>
-          </div> -->
-          <!-- /.col -->
-          <!-- <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol>
-          </div> --><!-- /.col
-        </div><!-- /.row -->
-      <!-- </div> --><!-- /.container-fluid -->
-    <!-- </div> -->
-    <!-- /.content-header -->
 
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">
 
-          @yield('content')
+        @yield('content')
 
-        </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </div>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
   <footer class="main-footer">
@@ -167,7 +138,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </footer>
 </div>
 
-
 <script type="text/javascript" src="/js/app.js"></script>
+<script type="text/javascript" src="/js/custom.js"></script>
+@include('sweetalert::alert')
+
 </body>
 </html>
