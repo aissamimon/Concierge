@@ -14,6 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>{{ config('app.name') }}</title>
 
   <link rel="stylesheet" type="text/css" href="/css/app.css">
+  <link rel="stylesheet" type="text/css" href="/css/custom.css">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -94,12 +95,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>Staff</p>
                 </a>
               </li>
-              <!-- <li class="nav-item">
-                <a href="/roles" class="nav-link {{ (request()->is('roles')) ? 'active' : '' }}">
+              <li class="nav-item">
+                <a href="/incident_type" class="nav-link {{ (request()->is('incidents')) ? 'active' : '' }}">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Roles</p>
+                  <p>Incidents</p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </li>
 
@@ -169,5 +170,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 <script type="text/javascript" src="/js/app.js"></script>
+@include('sweetalert::alert')
 </body>
 </html>
