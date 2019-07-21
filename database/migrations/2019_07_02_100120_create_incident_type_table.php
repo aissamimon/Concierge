@@ -15,9 +15,8 @@ class CreateIncidentTypeTable extends Migration
     {
         Schema::create('incident_type', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->timestamps();
-            $table->unique('name');
         });
     }
 

@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-<div class="row" >
 	<div class="col-md-12 mt-4">
 		<div class="card collapsed-card">
 	    <div class="card-header">
@@ -32,11 +30,11 @@
 										<th class="typ_incident_table_th">
 											<form method="POST" action="incident_type/{{ $incident_type->id }}" class="typ_incident_table">
 											@method('PUT')
-											@csrf   
+											@csrf
 												<div class="form-group">
-													<input 	type="text"   
-																	name="name" 
-																	value="{{$incident_type->name}}" 
+													<input 	type="text"
+																	name="name"
+																	value="{{$incident_type->name}}"
 																	onclick="this.style='background-color: transparent ;' " >
 												</div>
 												<button type="submit" id="buttonSave.{{$i}}"  class="save"><i class="fa fa-save"></i></button>
@@ -48,7 +46,7 @@
 
 									@if ($errors->any())
 									<tr class="column_typIncidentTable_error">
-										<th>	
+										<th>
 											<div>
 												<ul>
 
@@ -71,7 +69,7 @@
   	</div><!-- /.card-body -->
 
   	<!-- Table to show the incidents -->
-    <div class="card"> 
+    <div class="card">
 			<div class="card-header">
 				<h3 class="card-title cardTitle">Incidents Managment</h3>
 				<div class="card-tools">
@@ -128,37 +126,37 @@
 
 						<div class="modal-body">
 							<div class="form-group">
-								<input 	type="text" 
-												id="name" 
-												name="name" 
-												placeholder="Insert incident Name" 
-												class="form-control" 
-												value="{{old('name')}}" 
+								<input 	type="text"
+												id="name"
+												name="name"
+												placeholder="Insert incident Name"
+												class="form-control"
+												value="{{old('name')}}"
 												v-model="name" >
 
-								<span class="addIncidentTypeErrorMessage" 
+								<span class="addIncidentTypeErrorMessage"
 											v-text="errors.get('name')">
 								</span>
 							</div>
 
 							<div class="form-group">
-								<input 	type="text" 
-												id="description" 
-												name="description" 
-												placeholder="Insert a description for the incident" 
-												class="form-control " 
-												value="{{old('description')}}" 
+								<input 	type="text"
+												id="description"
+												name="description"
+												placeholder="Insert a description for the incident"
+												class="form-control "
+												value="{{old('description')}}"
 												v-model="description" >
 
-								<span class="addIncidentTypeErrorMessage" 
+								<span class="addIncidentTypeErrorMessage"
 											v-text="errors.get('description')">
 								</span>
 							</div>
-							
+
 							<div class="form-group" style="display: flex; flex-direction: column;">
-								<select  	id="incidentTypeId" 
-													name="incident_type_id" 
-													class="form-control" 
+								<select  	id="incidentTypeId"
+													name="incident_type_id"
+													class="form-control"
 													v-model="incident_type_id" >
 
 									<option value=""></option>
@@ -167,7 +165,7 @@
 									@endforeach
 								</select>
 
-									<span class="addIncidentTypeErrorMessage" 
+									<span class="addIncidentTypeErrorMessage"
 												v-text="errors.get('incident_type_id')">
 									</span>
 							</div>
@@ -182,6 +180,5 @@
 		  </div>
 		</div>
   </imodal>
-</div>
 
 @endsection
