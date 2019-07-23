@@ -1,7 +1,7 @@
 <script>
 
 	class Errors{
-	
+
 		constructor() {
 
 			this.errors = {};
@@ -36,17 +36,13 @@
         },
 
         methods: {
-
         	onSubmit(){
 
         		axios.post('/incident', this.$data)
-
 	        		.then(response => window.location.replace('/incident_type'))
 	        		.catch(error => this.errors.record(error.response.data.errors));
         	}
-
-        	
         }
     }
 
-</script>		
+</script>

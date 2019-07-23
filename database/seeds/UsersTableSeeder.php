@@ -19,6 +19,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => Hash::make('password'),
         ]);
-        $user->roles()->attach(Role::where('name', 'admin')->first());
+        $user->roles()->attach(Role::where('name', 'Admin')->first());
     }
 }

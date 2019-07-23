@@ -5,8 +5,24 @@
  */
 
 require('./bootstrap');
+import { Form, HasError, AlertError } from 'vform'
+import Swal from 'sweetalert2'
+
 
 window.Vue = require('vue');
+window.Form = Form;
+window.Fire = new Vue();
+window.swal = Swal;
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
+
+window.Toast = Toast;
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,8 +35,14 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('imodal', require('./components/imodal.vue').default);
+Vue.component('btn-show-modal', require('./components/modal/BtnShowModal.vue').default);
+Vue.component('modal', require('./components/modal/Modal.vue').default);
+Vue.component('staff-form', require('./components/modal/forms/StaffForm.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,3 +53,4 @@ Vue.component('imodal', require('./components/imodal.vue').default);
 const app = new Vue({
     el: '#app',
 });
+
