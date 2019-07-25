@@ -90,13 +90,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/users" class="nav-link {{ (request()->is('users')) ? 'active' : '' }}">
+                <a href="/staffs" class="nav-link {{ (request()->is('staffs')) ? 'active' : '' }}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Staff</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/incident_type" class="nav-link {{ (request()->is('incidents')) ? 'active' : '' }}">
+                <a href="/incident_type" class="nav-link {{ (request()->is('incident_type')) ? 'active' : '' }}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Incidents</p>
                 </a>

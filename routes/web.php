@@ -22,8 +22,10 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('/staff', 'StaffController@index')->name('staff');
-Route::post('/staff', 'StaffController@store');
+
+Route::get('/staffs', 'StaffsController@index')->name('staffs');
+Route::post('/staffs', 'StaffsController@store')->name('staffs');
+Route::delete('/staffs/{staff}', 'StaffsController@destroy')->name('staffs');
 
 Route::post('/incident', 'IncidentsController@store')->name('incident');
 Route::delete('/incident/{incident}', 'IncidentsController@destroy')->name('incident');
