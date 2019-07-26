@@ -68,8 +68,7 @@ class StaffsController extends Controller
     {
         $attributes = $request->validate([
             'name' => 'required|string',
-            'username' => 'required|string',
-            'email' => 'required|string|email|unique:users',
+            'username' => 'required|string|unique:users,username',
             'role_id' => 'required',
             'password' => 'required|string|confirmed|min:8'
         ]);

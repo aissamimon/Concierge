@@ -38,10 +38,10 @@ window.Toast = Toast;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('imodal', require('./components/imodal.vue').default);
 Vue.component('btn-show-modal', require('./components/modal/BtnShowModal.vue').default);
 Vue.component('modal', require('./components/modal/Modal.vue').default);
 Vue.component('staff-form', require('./components/modal/forms/StaffForm.vue').default);
+Vue.component('incident-form', require('./components/modal/forms/IncidentForm.vue').default);
 
 
 /**

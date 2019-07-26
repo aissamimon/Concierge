@@ -96,7 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/incident_type" class="nav-link {{ (request()->is('incident_type')) ? 'active' : '' }}">
+                <a href="/incident" class="nav-link {{ (request()->is('incident_type')) ? 'active' : '' }}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Incidents</p>
                 </a>

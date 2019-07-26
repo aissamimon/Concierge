@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-md-12 mt-4">
-    <!-- Table to show the incidents -->
+    <!-- Table to show roles -->
     <div class="card">
         <div class="card-header">
             <h3 class="card-title cardTitle">Staffs Managment</h3>
@@ -17,7 +17,6 @@
                         <th>Name</th>
                         <th>Username</th>
                         <th>Role</th>
-                        <th>Email</th>
                         <th>Action</th>
                     </tr>
 
@@ -26,7 +25,6 @@
                         <td>{{$staff->name}}</td>
                         <td>{{$staff->username}}</td>
                         <td>{{$staff->roles->first()->name}}</td>
-                        <td>{{$staff->email}}</td>
                         <td>
                             @if (auth()->user()->id != $staff->id)
                             <form method="POST" action="/staffs/{{ $staff->id }}">
@@ -55,28 +53,21 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <input v-model="form.name" type="text" name="name" class="form-control"
-                                :class="{ 'is-invalid': form.errors.has('name') }" placeholder="Name">
+                                :class="{ 'is-invalid': form.errors.has('name') }" placeholder="Name" required>
                         <has-error :form="form" field="name"></has-error>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <input v-model="form.username" type="text" name="username" class="form-control"
-                                :class="{ 'is-invalid': form.errors.has('username') }" placeholder="Username">
+                                :class="{ 'is-invalid': form.errors.has('username') }" placeholder="Username" required>
                         <has-error :form="form" field="username"></has-error>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <input v-model="form.email" type="email" name="email" class="form-control"
-                                :class="{ 'is-invalid': form.errors.has('email') }" placeholder="Email">
-                        <has-error :form="form" field="email"></has-error>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
                         <select id="role_id" name="role_id" class="form-control" v-model="form.role_id"
-                                :class="{ 'is-invalid': form.errors.has('role_id') }">
+                                :class="{ 'is-invalid': form.errors.has('role_id') }" required>
                             <option value="">Select Role...</option>
                             @foreach ($roles as $role)
                                 <option value="{{$role->id}}">{{$role->name}}</option>
@@ -88,14 +79,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <input v-model="form.password" type="password" name="password" class="form-control"
-                                :class="{ 'is-invalid': form.errors.has('password') }" placeholder="Password" autocomplete="new-password">
+                                :class="{ 'is-invalid': form.errors.has('password') }" placeholder="Password" autocomplete="new-password" required>
                         <has-error :form="form" field="password"></has-error>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <input v-model="form.password_confirmation" type="password" name="password_confirmation" class="form-control"
-                                :class="{ 'is-invalid': form.errors.has('password') }" placeholder="Confirme Password" autocomplete="new-password">
+                                :class="{ 'is-invalid': form.errors.has('password') }" placeholder="Confirme Password" autocomplete="new-password" required>
                     </div>
                 </div>
             </div>
