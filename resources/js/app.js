@@ -42,6 +42,9 @@ Vue.component('btn-show-modal', require('./components/modal/BtnShowModal.vue').d
 Vue.component('modal', require('./components/modal/Modal.vue').default);
 Vue.component('staff-form', require('./components/modal/forms/StaffForm.vue').default);
 Vue.component('incident-form', require('./components/modal/forms/IncidentForm.vue').default);
+Vue.component('confirm-dialog-incidents', require('./components/confirm_dialog/ConfirmDialogIncidents.vue').default);
+Vue.component('confirm-dialog-staff', require('./components/confirm_dialog/ConfirmDialogStaff.vue').default);
+
 
 
 /**

@@ -75,10 +75,6 @@ class IncidentsController extends Controller
     protected function validator(Request $request)
     {
 
-        $messages = [
-            'incident_type_id.required' => 'This field is required.'
-        ];
-
         $attributes = $request->validate([
             'name' => 'bail|required|min:5|max:25|string',
             'description' => 'required|string',

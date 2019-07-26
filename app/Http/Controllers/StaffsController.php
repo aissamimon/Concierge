@@ -67,7 +67,7 @@ class StaffsController extends Controller
     protected function validator(Request $request)
     {
         $attributes = $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string|min:5',
             'username' => 'required|string|unique:users,username',
             'role_id' => 'required',
             'password' => 'required|string|confirmed|min:8'

@@ -12,6 +12,7 @@
 				</div>
 			</div>
 			<div class="card-body table-responsive p-0">
+				<confirm-dialog-incidents inline-template>
 				<table class="table table-hover incidents-managment">
 					<tbody>
 						<tr>
@@ -27,19 +28,18 @@
 							<td>{{$incident->name}}</td>
 							<td>{{$incident->description}}</td>
 							<td>
-								<form method="POST" action="/incident/{{ $incident->id }}">
-									@method('DELETE')
-	  								@csrf
-									<button type="submit" style="border:none; background: none">
+								<form>
+									<button type="button" style="border:none; background: none" 
+													v-on:click="onDelete({{ $incident->id }})">
 										<i class="fa fa-user-times text-red" style="color:red;"></i>
 									</button>
 								</form>
 							</td>
 						</tr>
 						@endforeach
-
 					</tbody>
 				</table>
+				</confirm-dialog-incidents>
 			</div>
     </div>
 	</div>

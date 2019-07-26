@@ -11,6 +11,7 @@
             </div>
         </div>
         <div class="card-body table-responsive p-0">
+            <confirm-dialog-staff inline-template>
             <table class="table table-hover incidents-managment">
                 <tbody>
                     <tr>
@@ -27,10 +28,9 @@
                         <td>{{$staff->roles->first()->name}}</td>
                         <td>
                             @if (auth()->user()->id != $staff->id)
-                            <form method="POST" action="/staffs/{{ $staff->id }}">
-                                @method('DELETE')
-                                @csrf
-                                <button type="submit" style="border:none; background: none">
+                            <form>
+                                <button type="button" style="border:none; background: none"
+                                         v-on:click="onDelete({{ $staff->id }})">
                                     <i class="fa fa-user-times text-red" style="color:red;"></i>
                                 </button>
                             </form>
@@ -40,6 +40,7 @@
                     @endforeach
                 </tbody>
             </table>
+        </confirm-dialog-staff>
         </div>
     </div>
 </div>
