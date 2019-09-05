@@ -24,10 +24,9 @@
 		        <div id="profile">
 		            <div class="wrap">
 		                <img id="profile-img" src="/assets/img/user-profil.png" class="online" alt="" />
-		                <p>Contact Name</p>
+		                <p>{{ Auth::user()->username }}</p>
 		            </div>
 		        </div>
-		        
 		        <div id="contacts">
 		            <ul>
 		                @foreach ($users as $user)
@@ -83,11 +82,11 @@
 		</div>
 </div>
 
-<!-- <script src='/js/chatJS/console_runner.js'></script> -->
-<!-- <script src='/js/chatJS/events_runner.js'></script> -->
-<!-- <script src='/js/chatJS/css_live_reload_init.js'></script>
-<script src="/js/chatJS/hoy3lrg.js"></script> -->
-<!-- <script src="/js/chatJS/stopExecutionOnTimeout.js"></script> -->
+<!-- <script src='/js/chatJS/console_runner.js'></script>
+<script src='/js/chatJS/events_runner.js'></script>
+<script src='/js/chatJS/css_live_reload_init.js'></script>
+<script src="/js/chatJS/hoy3lrg.js"></script>
+<script src="/js/chatJS/stopExecutionOnTimeout.js"></script> -->
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 <script type="text/javascript" src="/js/app.js"></script>
 @include('sweetalert::alert')
