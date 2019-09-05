@@ -17,9 +17,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" type="text/css" href="/css/custom.css">
 
 </head>
-<body class="hold-transition sidebar-mini">
-<div class="wrapper" id="app">
 
+<body class="hold-transition sidebar-mini">
+
+<div class="wrapper" id="app">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
 
@@ -95,12 +96,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>Staff</p>
                 </a>
               </li>
-             <!--  <li class="nav-item">
+              <li class="nav-item">
                 <a href="/incident" class="nav-link {{ (request()->is('incident_type')) ? 'active' : '' }}">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Incidents</p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </li>
 
@@ -168,7 +169,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </footer>
 </div>
 
-
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
 <script type="text/javascript" src="/js/app.js"></script>
 @include('sweetalert::alert')
 </body>

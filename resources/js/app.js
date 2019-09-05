@@ -44,6 +44,8 @@ Vue.component('staff-form', require('./components/modal/forms/StaffForm.vue').de
 Vue.component('incident-form', require('./components/modal/forms/IncidentForm.vue').default);
 Vue.component('confirm-dialog-incidents', require('./components/confirm_dialog/ConfirmDialogIncidents.vue').default);
 Vue.component('confirm-dialog-staff', require('./components/confirm_dialog/ConfirmDialogStaff.vue').default);
+Vue.component('chat-component', require('./components/chat/ChatComponent.vue').default);
+
 
 
 
