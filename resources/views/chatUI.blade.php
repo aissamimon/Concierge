@@ -17,7 +17,6 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
-
 <div class="wrapper" id="app" style="width: 100%">
 		<div id="frame">
 		    <div id="sidepanel">
@@ -89,6 +88,7 @@
 <script src="/js/chatJS/stopExecutionOnTimeout.js"></script> -->
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
 <script type="text/javascript" src="/js/app.js"></script>
+<script src="/js/chatJS/custom.js"></script>
 @include('sweetalert::alert')
 </body>
 </html>

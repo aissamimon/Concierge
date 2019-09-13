@@ -27,4 +27,9 @@ class ChatController extends Controller
     	$users = User::all();
     	return view('chatUI', compact('users'));
     }
+
+    public function chatClient()
+    {
+        return view('chatClientUI');
+    }
 }

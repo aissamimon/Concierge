@@ -58,6 +58,14 @@ $(document).ready(function() {
       }
     });
     
-    
+    $('.barmenubutton').click(function(){
+       var element = document.getElementsByClassName("rigthpanel")[0];
+       element.setAttribute("style", "display: block; opacity: 1;");
+   });
+       
+   $('.barmenubutton2').click(function(){
+       var element = document.getElementsByClassName("rigthpanel")[0];
+       element.setAttribute("style", "display: none; opacity: 0;");
+   });
     
 });
