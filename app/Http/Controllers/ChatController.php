@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Incidents;
 
 class ChatController extends Controller
 {
@@ -22,7 +23,13 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
+    {
+        //
+    }
+
+    public function chatUI()
     {
     	$users = User::all();
     	return view('chatUI', compact('users'));
@@ -30,6 +37,8 @@ class ChatController extends Controller
 
     public function chatClient()
     {
-        return view('chatClientUI');
+        $users = User::all();
+        $incidents = Incidents::all();
+        return view('chatClientUI', compact('users', 'incidents'));
     }
 }

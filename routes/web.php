@@ -21,7 +21,7 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('/chatUI', 'ChatController@index')->name('chatUI');
+Route::get('/chatUI', 'ChatController@chatUI')->name('chatUI');
 Route::get('/chatClientUI', 'ChatController@chatClient')->name('chatClientUI');
 
 

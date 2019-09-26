@@ -27,7 +27,6 @@
 				<div class="wrap">
 					<img id="profile-img" src="/assets/img/user-profil.png" class="online" alt="" />
 					<p>Name</p>
-	<!--				<i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>-->
 					<div id="status-options">
 						<ul>
 							<li id="status-online" class="active"><span class="status-circle"></span> <p>Online</p></li>
@@ -36,30 +35,24 @@
 							<li id="status-offline"><span class="status-circle"></span> <p>Offline</p></li>
 						</ul>
 					</div>
-	<!--
-					<div id="expanded">
-						<label for="twitter"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
-						<input name="twitter" type="text" value="mikeross" />
-						<label for="twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
-						<input name="twitter" type="text" value="ross81" />
-						<label for="twitter"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
-						<input name="twitter" type="text" value="mike.ross" />
-					</div>
-	-->
 				</div>
 			</div>
 	        
 			<div id="contacts">
 				<ul>
-					<li class="contact active">
-						<div class="wrap">
-							<span class="contact-status busy"></span>
-							<img src="/assets/img/contact-profil.png" alt="" />
-							<div class="meta">
-								<p class="name">Name</p>
-							</div>
-						</div>
+					@foreach ($users as $user)
+					@if (auth()->user()->id != $user->id)
+					<li class="contact left">
+					    <div class="wrap">
+					        <span class="contact-status busy"></span>
+					        <img src="/assets/img/contact-profil.png" alt="" />
+					        <div class="meta">
+					            <p class="name">{{$user->name}}</p>
+					        </div>
+					    </div>
 					</li>
+					@endif
+					@endforeach
 				</ul>
 			</div>
 		</div>
@@ -108,17 +101,46 @@
             <i class="fa fa-bars" aria-hidden="true"></i>
         </button>
       </div>
+      <div class="incidents-title">
+      	<p>Wählen Sie etwas auf der Liste aus</p>
+      </div>
 			<div id="contacts">
 				<ul>
-					<li class="contact active">
-						<div class="wrap">
-							
-						</div>
-					</li>
+					<p>Messe</p>
+					@foreach ($incidents as $incident)
+						@if ($incident->incidentType->name == "Messe")
+						<li class="contact active">
+							<div class="wrap">
+								{{$incident->name}}
+							</div>
+						</li>
+						@endif
+					@endforeach
+
+					<p>Technik</p>
+					@foreach ($incidents as $incident)
+						@if ($incident->incidentType->name == "Technik")
+						<li class="contact active">
+							<div class="wrap">
+								{{$incident->name}}
+							</div>
+						</li>
+						@endif
+					@endforeach
+
+					<p>Protempo</p>
+					@foreach ($incidents as $incident)
+						@if ($incident->incidentType->name == "Protempo")
+						<li class="contact active">
+							<div class="wrap">
+								{{$incident->name}}
+							</div>
+						</li>
+						@endif
+					@endforeach
 				</ul>
 			</div>
-		</div>
-	    
+		</div>  
 	</div>
 </div>
     
@@ -126,6 +148,13 @@
 <script type="text/javascript" src="/js/app.js"></script>
 <script src="/js/chatJS/custom.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>
-    
+<script>
+	$(document).ready(function(){
+	  $('ul li.left ').click(function(){
+	    $('li.left ').removeClass("active");
+	    $(this).addClass("active");
+		});
+	});
+</script>
 </body>
 </html>

@@ -1284,10 +1284,11 @@ body {
   font-family: "proxima-nova",  "Source Sans Pro", sans-serif;
   float: left;
   border: none;
-  width: calc(100% - 90px);
+  width: calc(100% - 50px);
   padding: 11px 32px 10px 8px;
   font-size: 0.8em;
   color: #32465a;
+  height: 47px;
 }
 @media screen and (max-width: 735px) {
   #frame .content .message-input .wrap input {
@@ -1338,4 +1339,18 @@ body {
 }
 #frame .content .message-input .wrap button:focus {
   outline: none;
+}
+
+@media screen and (max-width: 735px) {
+   #sidepanel div.wrap img{
+    margin-top: 10px;
+  }
+
+  #sidepanel #contacts{
+    margin-top: 35px ;
+  }
+
+  #frame .content .message-input .wrap input{
+    height: 55px;
+  }
 }

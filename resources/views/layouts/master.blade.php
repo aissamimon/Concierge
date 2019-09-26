@@ -74,82 +74,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
           <li class="nav-item ">
             <a href="/dashboard" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
+              <i class="nav-icon fas fa-tachometer-alt text-teal"></i>
+              <p> Dashboard</p>
             </a>
           </li>
-
-          <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
-              <i class="nav-icon fa fa-cog"></i>
-              <p>
-                Managment
-                <i class="right fa fa-angle-left"></i>
-              </p>
+          <li class="nav-item ">
+            <a href="/staffs" class="nav-link {{ (request()->is('staffs')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-users text-indigo"></i>
+              <p> Staff </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/staffs" class="nav-link {{ (request()->is('staffs')) ? 'active' : '' }}">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Staff</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/incident" class="nav-link {{ (request()->is('incident_type')) ? 'active' : '' }}">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Incidents</p>
-                </a>
-              </li>
-            </ul>
           </li>
-
+          <li class="nav-item ">
+            <a href="/incident" class="nav-link {{ (request()->is('incident')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-exclamation-triangle text-orange" ></i>
+              <p> Incidents </p>
+            </a>
+          </li>
           <li class="nav-item">
            <a class="nav-link" href="{{ route('logout') }}"
              onclick="event.preventDefault();
              document.getElementById('logout-form').submit();">
-             <i class="fas fa-power-off nav-icon red"></i>
+             <i class="fas fa-power-off nav-icon text-red"></i>
              <p>
                {{ __('Logout') }}
              </p>
            </a>
-
-           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-             @csrf
-           </form>
+           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
          </li>
-
         </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
+      </nav><!-- /.sidebar-menu -->
+    </div><!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <!-- <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2"> -->
-          <!-- <div class="col-sm-6">
-            <h1 class="m-0 text-dark">@yield('header', 'Bookme')</h1>
-          </div> -->
-          <!-- /.col -->
-          <!-- <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol>
-          </div> --><!-- /.col
-        </div><!-- /.row -->
-      <!-- </div> --><!-- /.container-fluid -->
-    <!-- </div> -->
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <div class="content">
+  <div class="content-wrapper"><!-- Content Wrapper. Contains page content -->
+    <div class="content"><!-- Main content -->
       <div class="container-fluid">
         <div class="row">
 
@@ -157,14 +115,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         </div>
       </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    </div> <!-- /.content -->
+  </div><!-- /.content-wrapper -->
+  
 
   <!-- Main Footer -->
   <footer class="main-footer">
-
     <strong>Copyright &copy; 2019-2020 <a href="#">Concierge</a>.</strong> All rights reserved.
   </footer>
 </div>

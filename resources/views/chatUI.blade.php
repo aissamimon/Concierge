@@ -30,7 +30,7 @@
 		            <ul>
 		                @foreach ($users as $user)
 		                @if (auth()->user()->id != $user->id)
-		                <li class="contact active">
+		                <li  class="contact " >
 		                    <div class="wrap">
 		                        <span class="contact-status busy"></span>
 		                        <img src="/assets/img/contact-profil.png" alt="" />
@@ -69,7 +69,7 @@
 		            	<chat-component inline-template>
 		            	<form @submit.prevent="sendMessage()">
 		            		<input type="text" placeholder="Write your message..." />
-		            		<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+		            		<!-- <i class="fa fa-paperclip attachment" aria-hidden="true"></i> -->
 		            		<button class="submit">
 		            		    <i class="fa fa-paper-plane" aria-hidden="true"></i>
 		            		</button>
@@ -90,5 +90,13 @@
 <script type="text/javascript" src="/js/app.js"></script>
 <script src="/js/chatJS/custom.js"></script>
 @include('sweetalert::alert')
+<script>
+	$(document).ready(function(){
+	  $('ul li ').click(function(){
+	    $('li ').removeClass("active");
+	    $(this).addClass("active");
+		});
+	});
+</script>
 </body>
 </html>
