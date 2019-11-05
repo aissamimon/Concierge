@@ -1,4 +1,19 @@
+/* Smartphone */
+@media screen and (max-width: 360px) {
 
+  div.barmenu{
+    padding: 0px 20px 0px 10px !important;
+  }
+
+  div.barmenu p{
+    font-size: 13px !important;
+    padding-top: 15px !important;
+  }
+
+  div.rigthpanel #contacts {
+    margin-top: 40px !important;
+  }
+}
 
 @media screen and (max-width: 1259px) {
     
@@ -20,18 +35,35 @@
     margin-top: 40px ;
   }
 
+  div.rigthpanel #contacts{
+    margin-top: 30px !important;
+  }
+
+  div.rigthpanel #contacts {
+    height: calc(100% - 160px) !important;
+  }
+
   .rigthpanel ul li.contact{
       padding: 5px !important;
   }
 
   div.rigthpanel #contacts ul{
     margin-top: 0px !important;
+  }
+
+  div.rigthpanel .input-group{
+    margin-left:  20px !important;
   } 
 
-  div.incidents-title p{
-    padding: 10px !important;
-    font-size: 100% !important;
+  div.barmenutop{
+    float: right;
+    margin-right: 20px;
   }
+  
+  div.barmenu p{
+    font-size: 14px;
+  }
+
 }
 
 @media screen and (min-width: 1260px) {
@@ -47,14 +79,24 @@
     width: calc(100% - 680px);
   }
     
-  div.barmenu{
-   display: none
+  div.barmenutop button{
+   display: none ;
+  }
+
+  div.barmenu button{
+   display: none ;
   }
 }
 
 div.barmenu{
-  float: right;
-  margin-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 20px 0px 20px;
+}
+
+div.barmenu p{
+  margin: 0px !important;
 }
 
 div.barmenu button{
@@ -67,6 +109,16 @@ div.barmenu button{
 	outline: inherit;
 }
 
+div.barmenutop button{
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
 div.rigthpanel #contacts ul{
   margin-top: 50px;
   transform: rotateY(180deg);
@@ -75,28 +127,25 @@ div.rigthpanel #contacts ul{
 
 div.rigthpanel #contacts{
   width: 100%;
+  padding-left: 15px;
 } 
 
 div.rigthpanel #contacts ul li div.wrap{
   transform: rotateY(180deg);
 }
 
-/*div.rigthpanel #contacts ul li.contact{
-  margin-bottom: 20px; 
-}*/
 div.rigthpanel #contacts ul p:first-child{
   margin-top: 0;
 }
+
 div.rigthpanel #contacts ul p{
   transform: rotateY(180deg);
   margin-bottom: 5px;
   margin-top: 30px;
 }
 
-div.incidents-title p{
-  padding: 20px;
-  font-size: 1.5em;
-  margin-top: 30px;
+div.rigthpanel .input-group{
+  margin-left:  5px;
 }
 
 

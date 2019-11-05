@@ -61,7 +61,7 @@
 			<div class="contact-profile">
 				<img src="/assets/img/contact-profil.png" alt="" />
 				<p>Name</p>
-          <div class="barmenu">
+          <div class="barmenutop">
               <button class="barmenubutton">
                   <i class="fa fa-bars" aria-hidden="true"></i>
               </button>
@@ -71,11 +71,15 @@
 				<ul>
 					<li class="sent">
             <img src="/assets/img/user-profil.png" alt="" />
-            <p>Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent |</p>
+      			<p>Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent | Sent |</p>
 	        </li>
           <li class="replies">
             <img src="/assets/img/contact-profil.png" alt="" />
-            <p>Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli |</p>
+            <p>
+            	<label style="float: right; margin-right: 5px;"> 20.12.1991 / 10:00</label>
+            	<label style="display: block; "> Incident</label>
+            		Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli | Repli |
+            	</p>
           </li>    
 				</ul>
 			</div>
@@ -85,7 +89,6 @@
 					<chat-client-component inline-template>
 						<form @submit.prevent="sendMessage()">
 							<input type="text" placeholder="Write your message..." />
-							<i class="fa fa-paperclip attachment" aria-hidden="true"></i>
 							<button class="submit">
 								<i class="fa fa-paper-plane " aria-hidden="true"></i>
 							</button>
@@ -95,23 +98,23 @@
 			</div>
 		</div>
 	    
+
     <div id="sidepanel" class="rigthpanel " >
-      <div class="barmenu" style="margin-top: 20px;">
-        <button class="barmenubutton2">
-            <i class="fa fa-bars" aria-hidden="true"></i>
-        </button>
-      </div>
-      <div class="incidents-title">
+      <div class="barmenu">
       	<p>Wählen Sie etwas auf der Liste aus</p>
+        <button class="barmenubutton2"><i class="fa fa-bars" aria-hidden="true"></i></button>
       </div>
 			<div id="contacts">
 				<ul>
 					<p>Messe</p>
 					@foreach ($incidents as $incident)
 						@if ($incident->incidentType->name == "Messe")
-						<li class="contact active">
+						<li class="contact ">
 							<div class="wrap">
-								{{$incident->name}}
+								<div class="input-group">
+									<input type="radio" name="incident" value="{{$incident->name}}" id="{{$incident->id}}" class="form-check-input">
+									<label for="{{$incident->id}}" class="form-check-label">{{$incident->name}}</label>
+								</div>
 							</div>
 						</li>
 						@endif
@@ -120,9 +123,12 @@
 					<p>Technik</p>
 					@foreach ($incidents as $incident)
 						@if ($incident->incidentType->name == "Technik")
-						<li class="contact active">
+						<li class="contact ">
 							<div class="wrap">
-								{{$incident->name}}
+								<div class="input-group">
+									<input type="radio" name="incident" value="{{$incident->name}}" id="{{$incident->id}}" class="form-check-input">
+									<label for="{{$incident->id}}" class="form-check-label">{{$incident->name}}</label>
+								</div>
 							</div>
 						</li>
 						@endif
@@ -131,9 +137,12 @@
 					<p>Protempo</p>
 					@foreach ($incidents as $incident)
 						@if ($incident->incidentType->name == "Protempo")
-						<li class="contact active">
+						<li class="contact ">
 							<div class="wrap">
-								{{$incident->name}}
+								<div class="input-group"> 
+										<input type="radio" name="incident" value="{{$incident->name}}" id="{{$incident->id}}" class="form-check-input">
+										<label for="{{$incident->id}}" class="form-check-label">{{$incident->name}}</label>
+								</div>
 							</div>
 						</li>
 						@endif
