@@ -46,6 +46,8 @@ Vue.component('confirm-dialog-incidents', require('./components/confirm_dialog/C
 Vue.component('confirm-dialog-staff', require('./components/confirm_dialog/ConfirmDialogStaff.vue').default);
 Vue.component('chat-component', require('./components/chat/ChatComponent.vue').default);
 Vue.component('chat-client-component', require('./components/chat/ChatClientComponent.vue').default);
+Vue.component('staff-notification-center', require('./components/notification_center/StaffNotificationCenter.vue').default);
+Vue.component('supervisor-notification-center', require('./components/notification_center/SupervisorNotificationCenter.vue').default);
 
 
 
