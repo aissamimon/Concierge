@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Incidents;
+use App\Notification;
 
 class NCSupervisorController extends Controller
 {
@@ -14,7 +15,22 @@ class NCSupervisorController extends Controller
     }
 
     public function index(){
-    	 $incidents = Incidents::all();
-    	return view('notificationCenterSupervisor', compact('incidents'));
+    	$incidents = Incidents::all();
+    	$notifications = Notification::orderBy('created_at', 'desc')->get();
+    	return view('notificationCenterSupervisor', compact('incidents', 'notifications'));
     }
+
+    public function store()
+    {
+
+    }
+
+
+    protected function validator(Request $request)
+    {
+        $attributes = $request->validate([]);
+        return $attributes;
+    }
+
+
 }

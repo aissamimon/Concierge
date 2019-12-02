@@ -2138,15 +2138,19 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: new Form({
-        reply: '',
+        standard_response_id: '',
         message: ''
       })
     };
   },
   methods: {
-    sendMessage: function sendMessage() {
-      console.log('send Message');
-      alert('send Message');
+    sendMessage: function sendMessage(id) {
+      console.log(this.form.standard_response_id);
+      this.form.put('/notification/' + id).then(function () {
+        console.log('Success');
+      })["catch"](function () {
+        console.log('Faild');
+      });
     },
     solve: function solve() {
       console.log('solve');
@@ -2177,15 +2181,21 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: new Form({
-        fehler: '',
+        user_id: '',
+        incident_id: '',
         description: ''
       })
     };
   },
   methods: {
-    sendIncident: function sendIncident() {
-      console.log('send Incident');
-      alert('send Incident');
+    sendIncident: function sendIncident(id) {
+      this.form.user_id = id; // console.log(this.form.user_id);
+
+      this.form.post('/notification').then(function () {
+        console.log('Success');
+      })["catch"](function () {
+        console.log('Faild');
+      });
     }
   }
 });

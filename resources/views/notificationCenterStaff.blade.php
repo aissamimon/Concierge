@@ -25,7 +25,7 @@
                 <div id="profile">
                     <div class="wrap">
                         <img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
-                        <p>Technik 1</p>
+                        <p>{{auth()->user()->name}}</p>
                         <button class="barmenubutton2">
                             <i class="fa fa-minus" aria-hidden="true"></i>
                         </button>
@@ -34,15 +34,19 @@
                 
                 <div id="contacts">
                     <ul>
-                        <li class="contact ">
-                            <div class="wrap">
-                                <span class="contact-status online"></span>
-                                <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                                <div class="meta">
-                                    <p class="name">Raum Name</p>
-                                </div>
-                            </div>
-                        </li>
+                        @foreach ($users as $user)
+                            @if (auth()->user()->id != $user->id && $user->roles->first()->name != "Admin" && $user->roles->first()->name != "Staff")
+                                <li class="contact" onclick="loadSupervisor('{{$user->id}}')">
+                                   <div class="wrap">
+                                        <span class="contact-status online"></span>
+                                        <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
+                                        <div class="meta">
+                                            <p class="name">{{$user->username}}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endif
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -57,10 +61,11 @@
                     </button>
                 </div>
                 
-                <div class="notification"> 
+                <div class="notification" id="notification"> 
+                    @foreach ($notifications as $notification)
                     <div class="card not-card">
                       <div class="card-header">
-                        Fehler name
+                        {{ ucfirst($notification->incidents->name) }}
                       </div>
                       <staff-notification-center inline-template>
                           <div class="card-body cuerpo">
@@ -69,22 +74,24 @@
                                     <h5 class="card-title">Description</h5>
                                     <i class="fa fa-caret-down" id="action-show" aria-hidden="true"> </i>
                                 </div>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text">{{$notification->description}}</p>
                                 <div style="display: flex;">
                                     <p class="card-text" style="margin-right: 10px">Send Message</p>
                                     <i class="fa fa-caret-down" id="action-show-2" aria-hidden="true" style="margin-top: 4px;"> </i>
                                 </div>
 
                                 <div class="card-footer card-fehler-footer" >
-                                    <form @submit.prevent="sendMessage()">
+                                    <form @submit.prevent="sendMessage({{$notification->id}})">
                                       <select class="form-control"
-                                              id="reply" 
-                                              name="reply" 
-                                              v-model="form.reply"
-                                              style="margin-bottom: 5px">
+                                              id="standard_response_id" 
+                                              name="standard_response_id"
+                                              style="margin-bottom: 5px"
+                                             v-model="form.standard_response_id">
                                               
                                         <option></option>
-                                        <option>Select quickly reply:</option>
+                                        @foreach ($responses as $respons)
+                                            <option value="{{$respons->id}}">{{$respons->response}}</option>
+                                        @endforeach
                                       </select>
                                       <div class="input-group">
                                         <input type="text" 
@@ -107,7 +114,8 @@
                             </div>
                           </div>      
                       </staff-notification-center>                
-                    </div>            
+                    </div>  
+                    @endforeach          
                 </div>
                 
                 <div class="notification-log">
@@ -143,7 +151,7 @@
     <!-- <script src="js/jquery-2.2.4.min.js"></script> -->
     <script src="js/notificationCenterJS/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/app.js"></script>
-    <script src="js/notificationCenterJS/custom.js"></script>
+    <script type="text/javascript" src="js/notificationCenterJS/custom.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
     
     <script>
@@ -153,7 +161,27 @@
             $(this).addClass("active");
           });
         });
+
+        function loadSupervisor(userId){
+            $.ajax({
+                url : '/getusernotifications',
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data:{
+                    user_id: userId
+                },
+                success: function(data){
+                   console.log(data.data);
+                   // document.getElementById("notification").innerHTML = "";
+                   // document.getElementById("notification").prepend(data.data);
+                },
+            });
+        }
     </script>
+
     
 </body>
 </html>

@@ -4,14 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Incidents extends Model
+class StandardResponse extends Model
 {
 
-	protected $guarded = [];
-	
-  public function incidentType(){
-		return $this->belongsTo(IncidentType::class);
-	}
+  protected $guarded = [];
 
 	public function notifications(){
 		return $this->hasMany(Notification::class);

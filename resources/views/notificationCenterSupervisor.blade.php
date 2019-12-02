@@ -30,124 +30,135 @@
                 </div>
                 
                 <supervisor-notification-center inline-template>
-                <div class="notification">
-                    <form @submit.prevent="sendIncident()">
-                        <!-- {{ Auth::user()->id }} -->
-                        <p style="margin-bottom: 0 !important; margin-left: 10px;"> Por favor seleccione el tipo de problema que tiene: </p>
-                        <div class="error-select">
-                            <ul style="display: flex; width: 100%; margin-bottom: 0 !important"> 
+                    <div class="notification">
+                        <form @submit.prevent="sendIncident({{Auth::user()->id}})">
+                            <p style="margin-bottom: 0 !important; margin-left: 10px;"> Por favor seleccione el tipo de problema que tiene: </p>
+                            <div class="error-select">
+                                <ul style="display: flex; width: 100%; margin-bottom: 0 !important"> 
+                                    <div class="cards">
+                                        <div class="org-name-label"> 
+                                            <fieldset class="org-name-label">Label 1</fieldset>
+                                            <i class="fas fa-tools"></i>
+                                        </div>
+                                        <div class="error-select-li">
+                                        @foreach ($incidents as $incident)
+                                            @if ($incident->incidentType->name == "Technik")
+                                                <li class="error-select-li">
+                                                    <input type="radio" 
+                                                           name="incident" 
+                                                           id="{{$incident->id}}"
+                                                           value="{{$incident->id}}" 
+                                                           class="form-check-input"
+                                                           v-model="form.incident_id"
+                                                           required>
 
-                                <div class="cards">
-                                    <div class="org-name-label"> 
-                                        <fieldset class="org-name-label">Label 1</fieldset>
-                                        <i class="fas fa-tools"></i>
+                                                    <label for="{{$incident->id}}" class="form-check-label">{{$incident->name}}</label>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                        </div>
                                     </div>
-                                    <div class="error-select-li">
-                                    @foreach ($incidents as $incident)
-                                        @if ($incident->incidentType->name == "Technik")
-                                            <li class="error-select-li">
-                                                <input type="radio" 
-                                                       name="incident" 
-                                                       value="{{$incident->id}}" 
-                                                       id="{{$incident->id}}" 
-                                                       class="form-check-input"
-                                                       v-model="form.fehler">
 
-                                                <label for="{{$incident->id}}" class="form-check-label">{{$incident->name}}</label>
-                                            </li>
-                                        @endif
-                                    @endforeach
+                                    <div class="cards">
+                                        <div class="org-name-label"> 
+                                            <fieldset class="org-name-label">Label 2</fieldset>
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="error-select-li"> 
+                                        @foreach ($incidents as $incident)
+                                            @if ($incident->incidentType->name == "Protempo")
+                                                <li class="error-select-li">
+                                                    <input type="radio" 
+                                                           name="incident" 
+                                                           id="{{$incident->id}}"
+                                                           value="{{$incident->id}}" 
+                                                           class="form-check-input"
+                                                           v-model="form.incident_id"
+                                                           required>
+
+                                                    <label for="{{$incident->id}}" class="form-check-label">{{$incident->name}}</label>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="cards">
-                                    <div class="org-name-label"> 
-                                        <fieldset class="org-name-label">Label 2</fieldset>
-                                        <i class="fas fa-map-marker-alt"></i>
+                                    <div class="cards">
+                                        <div class="org-name-label"> 
+                                            <fieldset class="org-name-label">Label 3</fieldset>
+                                            <i class="fas fa-hotel" style="font-size: 0.8em !important"></i>
+                                        </div>
+                                        <div class="error-select-li"> 
+                                        @foreach ($incidents as $incident)
+                                            @if ($incident->incidentType->name == "Messe")
+                                                <li class="error-select-li">
+                                                    <input type="radio" 
+                                                           name="incident" 
+                                                           id="{{$incident->id}}"
+                                                           value="{{$incident->id}}"
+                                                           class="form-check-input"
+                                                           v-model="form.incident_id"
+                                                           required>
+
+                                                    <label for="{{$incident->id}}" class="form-check-label">{{$incident->name}}</label>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                        </div>
                                     </div>
-                                    <div class="error-select-li"> 
-                                    @foreach ($incidents as $incident)
-                                        @if ($incident->incidentType->name == "Protempo")
-                                            <li class="error-select-li">
-                                                <input type="radio" 
-                                                       name="incident" 
-                                                       value="{{$incident->id}}" 
-                                                       id="{{$incident->id}}" 
-                                                       class="form-check-input"
-                                                       v-model="form.fehler">
 
-                                                <label for="{{$incident->id}}" class="form-check-label">{{$incident->name}}</label>
-                                            </li>
-                                        @endif
-                                    @endforeach
+                                </ul>
+                            </div>
+
+                            <div class="text-write">
+                                <div>
+                                    <div class="form-group">
+                                        <label for="inputText" style="display: block;">Breve Descrpcion</label>
+                                        <input style="width: 90%; float: left;"
+                                               type="text" 
+                                               name="description"
+                                               id="inputText"
+                                               placeholder=""
+                                               aria-describedby="emailHelp"
+                                               class="form-control"
+                                               :class="{ 'is-invalid': form.errors.has('description') }"
+                                               v-model="form.description"
+                                               required>
+
+                                        <has-error :form="form" field="description"></has-error>
+
+                                        <button type="submit" class="btn btn-primary" style="width: 9.6%;">Senden</button>
+                                        <small id="emailHelp" class="form-text text-muted" style="display: block;">* Por favor escriba una descripcion de su problema.</small>
                                     </div>
-                                </div>
-
-                                <div class="cards">
-                                    <div class="org-name-label"> 
-                                        <fieldset class="org-name-label">Label 3</fieldset>
-                                        <i class="fas fa-hotel" style="font-size: 0.8em !important"></i>
-                                    </div>
-                                    <div class="error-select-li"> 
-                                    @foreach ($incidents as $incident)
-                                        @if ($incident->incidentType->name == "Messe")
-                                            <li class="error-select-li">
-                                                <input type="radio" 
-                                                       name="incident" 
-                                                       value="{{$incident->id}}" 
-                                                       id="{{$incident->id}}" 
-                                                       class="form-check-input"
-                                                        v-model="form.fehler">
-
-                                                <label for="{{$incident->id}}" class="form-check-label">{{$incident->name}}</label>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                    </div>
-                                </div>
-
-                            </ul>
-                        </div>
-                        <div class="text-write">
-                            <div>
-                                <div class="form-group">
-                                    <label for="inputText" style="display: block;">Breve Descrpcion</label>
-                                    <input type="text" 
-                                           class="form-control" 
-                                           id="inputText"
-                                           name="description" 
-                                           aria-describedby="emailHelp" 
-                                           placeholder=""
-                                           v-model="form.description"
-                                           style="width: 90%; float: left;">
-
-                                    <button type="submit" class="btn btn-primary" style="width: 9.6%;">Senden</button>
-                                    <small id="emailHelp" class="form-text text-muted" style="display: block;">* Por favor escriba una descripcion de su problema.</small>
-                                </div>
-                            </div>    
-                        </div>
-                    </form>
-                </div>
+                                </div>    
+                            </div>
+                        </form>
+                    </div>
                 </supervisor-notification-center>
                 
                 <div class="notification-log" >
-                    <div class="card direct-chat direct-chat-primary">
-                      <div class="card-header solved-card-header">
-                        <h3 class="card-title">Fehler Name - Date - Status </h3>
-                        <button type="button" class="btn" id="collapse"><b>-</b></button>
-                      </div>
-                      <div class="card-body solved-card-body" id="solved-card-body">
-                        <div class="solved-description">
-                            <div class="res-group">
-                                <h5 class="card-title">Description</h5>
+
+                    @foreach ($notifications as $notification)
+                        @if ($notification->user_id == auth()->user()->id) 
+                            <div class="card direct-chat direct-chat-primary">
+                              <div class="card-header solved-card-header">
+                                <h3 class="card-title">{{ ucfirst($notification->incidents->name) }}</h3>
+                                <button type="button" class="btn" id="collapse"><b>-</b></button>
+                              </div>
+                              <div class="card-body solved-card-body" id="solved-card-body">
+                                <div class="solved-description">
+                                    <div class="res-group">
+                                        <h5 class="card-title">Description</h5>
+                                    </div>
+                                    <p class="card-text">{{$notification->description}}</p>
+                                    <p class="card-text">Mensaje recibido</p>
+                                    <p class="card-text">Respuesta rapida</p>
+                                    <p class="card-text">{{$notification->status}}</p>
+                                </div>
+                              </div>
                             </div>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <p class="card-text">Mensaje recibido</p>
-                            <p class="card-text">Respuesra rapida</p>
-                            <p class="card-text">Status</p>
-                        </div>
-                      </div>
-                    </div>
+                        @endif
+                    @endforeach
                 </div>
                 
                 <div class="log-mensajes">
@@ -169,6 +180,8 @@
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
     
     <script>
+        // var getId = (document.getElementsByTagName("INPUT")[0]);
+        // var idUser = getId.id;
         $(document).ready(function(){
           $('ul li ').click(function(){
             $('li ').removeClass("active");

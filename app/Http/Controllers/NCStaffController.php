@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Notification;
+use App\StandardResponse;
 
 class NCStaffController extends Controller
 {
@@ -15,7 +17,9 @@ class NCStaffController extends Controller
 
     public function index(){
     	$users = User::all();
-    	return view('notificationCenterStaff', compact('users'));
+    	$responses = StandardResponse::all();
+        $notifications = Notification::orderBy('created_at', 'desc')->get();
+    	return view('notificationCenterStaff', compact('users', 'responses', 'notifications'));
     }
-
+    
 }

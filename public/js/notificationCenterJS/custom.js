@@ -36,10 +36,4 @@ $(document).ready(function() {
       $('#slider-top').removeClass("slider-up-hidden");
       $('#slider-down').removeClass("slider-down-visible");
     });
-
-   
-    
-    
-    
-    
 });

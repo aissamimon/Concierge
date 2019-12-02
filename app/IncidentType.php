@@ -12,7 +12,6 @@ class IncidentType extends Model
 	public $table = "Incident_type";
 
 	public function incidents(){
-			
 			return $this->hasMany(Incidents::class);
 	}
 
